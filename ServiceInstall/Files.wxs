@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Fragment>
+<DirectoryRef Id="TARGETDIR">
+<Directory Id="ProgramFilesFolder" Name="PFiles">
+<Directory Id="IdConn" Name="Identity Connectors">
+<Directory Id="INSTALLDIR" Name="Connector Server" >
+<Component Id="ConnectorServerService" Guid="8B1F7E82-46D7-4F88-A1FA-44FCBF7E684F" DiskId="1">
+<ServiceInstall
+Id="ConnectorServerServiceInstall"
+Name="ConnectorServerService"
+DisplayName="ConnId Connector Server"
+Type="ownProcess"
+Start="auto"
+ErrorControl="normal"
+Description="ConnId Connector Server"
+Account="[SERVICEACCOUNT]"
+Password="[SERVICEPASSWORD]">
+</ServiceInstall>
+<ServiceControl Id="StartConnectorServerService" Name="ConnectorServerService" Start="install" Wait="no" />
+<ServiceControl Id="StopConnectorServerService" Name="ConnectorServerService" Stop="both" Wait="yes" Remove="uninstall" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\Common.dll" Name="Common.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\ConnectorServer.exe.config" Name="ConnectorServer.exe.config" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\ConnectorServer.pdb" Name="ConnectorServer.pdb" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\Framework.dll" Name="Framework.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\Framework.pdb" Name="Framework.pdb" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\FrameworkInternal.dll" Name="FrameworkInternal.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\FrameworkInternal.pdb" Name="FrameworkInternal.pdb" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\NLog.config" Name="NLog.config" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\NLog.dll" Name="NLog.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\NLog.xml" Name="NLog.xml" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\TestCommon.dll" Name="TestCommon.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\TestCommon.pdb" Name="TestCommon.pdb" />
+<File Source="C:\dev\openicf\connid\dotnet\ShellScriptExecutorFactory\bin\Release\Shell.ScriptExecutorFactory.dll" Name="Shell.ScriptExecutorFactory.dll" />
+<File Source="C:\dev\openicf\connid\dotnet\legal\THIRDPARTYREADME.txt" Name="THIRDPARTYREADME.txt" />
+<File Source="C:\dev\openicf\connid\dotnet\Service\bin\Release\ConnectorServer.exe" Name="ConnectorServer.exe" KeyPath="yes" />
+</Component>
+</Directory>
+</Directory>
+</Directory>
+</DirectoryRef>
+</Fragment>
+</Wix>
